@@ -12,6 +12,8 @@ Hand it interviews, survey answers, support tickets, field notes, whiteboard pho
 
 **Site:** [bbulman.github.io/research_synthesizer](https://bbulman.github.io/research_synthesizer/)
 
+This is the basis for the synthesize harness in [Workshopr.io](https://workshopr.io): the same grill, quote gate and second-reader loop, open-sourced so you can run it in Claude Code on your own research.
+
 ## Install
 
 You need Claude Code and Python 3.
@@ -139,4 +141,4 @@ python3 ../skills/synthesize/scripts/check_quotes.py bad-report.md notes/
 
 ## License
 
-MIT. Made by [Workshopr.io](https://workshopr.io).
+MIT. Made by [Workshopr.io](https://workshopr.io), where it's the basis for the synthesize harness.
