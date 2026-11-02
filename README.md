@@ -1,6 +1,6 @@
 # workshop_synthesizer
 
-![workshop_synthesizer: workshop themes you can defend, every quote checked](.github/social-preview.png)
+![workshop_synthesizer: workshop themes you can defend, every quote checked](.github/header.png)
 
 A workshop synthesizer for [Claude Code](https://claude.com/claude-code) that grills you first, quotes your sources word for word, and checks its own themes before you see them.
 
