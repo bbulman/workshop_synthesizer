@@ -5,7 +5,7 @@ description: Run a research synthesis with a short interview first and a check-a
 
 # /synthesize
 
-Three stages: **grill → synthesize → verify and loop.** You (the main conversation) run the interview and the loop. The `research-synthesizer` agent does the synthesis; the `research-verifier` agent attacks it. Neither agent can talk to the person, which is why the questions live here.
+Three stages: **grill → synthesize → verify and loop.** You (the main conversation) run the interview and the loop. The `workshop-synthesizer` agent does the synthesis; the `research-verifier` agent attacks it. Neither agent can talk to the person, which is why the questions live here.
 
 ## 1. Look before you ask
 
@@ -45,7 +45,7 @@ If the person says "just run it", skip the interview, write the brief from what 
 
 ## 3. Synthesize
 
-Spawn the `research-synthesizer` agent with: the confirmed brief, verbatim; every source path, URL or the pasted material; and the instruction to save the report (folder mode) or return it in full.
+Spawn the `workshop-synthesizer` agent with: the confirmed brief, verbatim; every source path, URL or the pasted material; and the instruction to save the report (folder mode) or return it in full.
 
 ## 4. Verify and loop (at most 3 passes)
 

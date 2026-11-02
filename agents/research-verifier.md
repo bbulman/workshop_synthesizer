@@ -1,6 +1,6 @@
 ---
 name: research-verifier
-description: Adversarial reviewer for a research-synthesizer report. Use only when the /synthesize loop asks for a verification pass; give it the report, the brief and the sources. It tries to knock each theme down against the sources and returns a list of issues. Read-only.
+description: Adversarial reviewer for a workshop-synthesizer report. Use only when the /synthesize loop asks for a verification pass; give it the report, the brief and the sources. It tries to knock each theme down against the sources and returns a list of issues. Read-only.
 model: opus
 effort: high
 color: orange

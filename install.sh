@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs the research synthesizer into Claude Code: the research-synthesizer and
+# Installs the workshop synthesizer into Claude Code: the workshop-synthesizer and
 # research-verifier agents, and the /synthesize skill.
 #
 #   ./install.sh      installs into ~/.claude (set CLAUDE_DIR to install elsewhere)
@@ -11,9 +11,9 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 CLAUDE_DIR="${CLAUDE_DIR:-$HOME/.claude}"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 
-echo "Installing the research synthesizer into $CLAUDE_DIR"
+echo "Installing the workshop synthesizer into $CLAUDE_DIR"
 mkdir -p "$CLAUDE_DIR/agents" "$CLAUDE_DIR/skills"
-for agent in research-synthesizer research-verifier; do
+for agent in workshop-synthesizer research-verifier; do
   if [ -f "$CLAUDE_DIR/agents/$agent.md" ]; then
     cp "$CLAUDE_DIR/agents/$agent.md" "$CLAUDE_DIR/agents/$agent.md.bak.$STAMP"
     echo "  kept the old agent as agents/$agent.md.bak.$STAMP"
@@ -26,7 +26,7 @@ if [ -d "$CLAUDE_DIR/skills/synthesize" ]; then
   echo "  kept the old skill as backups/synthesize.$STAMP"
 fi
 cp -R "$HERE/skills/synthesize" "$CLAUDE_DIR/skills/synthesize"
-echo "  wrote agents/research-synthesizer.md, agents/research-verifier.md and skills/synthesize/"
+echo "  wrote agents/workshop-synthesizer.md, agents/research-verifier.md and skills/synthesize/"
 
 echo "Checking"
 if command -v python3 >/dev/null 2>&1; then

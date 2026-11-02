@@ -1,8 +1,8 @@
-# research_synthesizer
+# workshop_synthesizer
 
-![research-synthesizer: research themes you can defend, every quote checked](.github/social-preview.png)
+![workshop-synthesizer: research themes you can defend, every quote checked](.github/social-preview.png)
 
-A research synthesizer for [Claude Code](https://claude.com/claude-code) that grills you first, quotes your sources word for word, and checks its own themes before you see them.
+A workshop synthesizer for [Claude Code](https://claude.com/claude-code) that grills you first, quotes your sources word for word, and checks its own themes before you see them.
 
 Hand it interviews, survey answers, support tickets, field notes, whiteboard photos or a FigJam board. It asks what decision the research is for, then writes themes where every claim carries a verbatim quote and a source tag. Then it loops: a script checks every quote against the sources, a second agent tries to knock each theme down, and the first agent fixes only what they caught, until the synthesis holds up.
 
@@ -10,7 +10,7 @@ Hand it interviews, survey answers, support tickets, field notes, whiteboard pho
 /synthesize research/notes/
 ```
 
-**Site:** [bbulman.github.io/research_synthesizer](https://bbulman.github.io/research_synthesizer/)
+**Site:** [bbulman.github.io/workshop_synthesizer](https://bbulman.github.io/workshop_synthesizer/)
 
 This is the basis for the synthesize harness in [Workshopr.io](https://workshopr.io): the same grill, quote gate and second-reader loop, open-sourced so you can run it in Claude Code on your own research.
 
@@ -19,8 +19,8 @@ This is the basis for the synthesize harness in [Workshopr.io](https://workshopr
 You need Claude Code and Python 3.
 
 ```bash
-git clone https://github.com/bbulman/research_synthesizer.git
-cd research_synthesizer
+git clone https://github.com/bbulman/workshop_synthesizer.git
+cd workshop_synthesizer
 ./install.sh
 ```
 
@@ -32,7 +32,7 @@ For whiteboard photos nothing else is needed. For FigJam boards, connect a Figma
 
 1. **Looks before it asks.** It counts your sources by type, notes who the participants are when the notes say so (admin, solo user, new, returning), and flags anything that isn't research, like a PRD in the pile or a FigJam link with no FigJam tool.
 2. **Grills you.** One question at a time, each with a recommended answer drawn from what it saw: the decision this informs, the research question (rephrased neutrally if it assumes its answer), who reads the report, which groups to compare, your hunches, what's out of scope. It ends with a five-line brief for you to confirm.
-3. **Synthesizes.** A fresh `research-synthesizer` agent reads everything before coding anything, codes each source with equal care, clusters the codes into 3–7 themes, and cuts any theme that could have been written without reading the data. Your hunches become hypotheses it marks supported, contradicted or open. They never count as evidence.
+3. **Synthesizes.** A fresh `workshop-synthesizer` agent reads everything before coding anything, codes each source with equal care, clusters the codes into 3–7 themes, and cuts any theme that could have been written without reading the data. Your hunches become hypotheses it marks supported, contradicted or open. They never count as evidence.
 4. **Counts instead of guessing.** Each theme lists the sources behind it, as "4 of 4 participants" rather than "most users", with a confidence rating, counter-evidence and, when the notes label groups, a table of themes by group.
 5. **Checks every quote.** The agent searches the sources for each quote before it returns, and `check_quotes.py` checks again: case, wording and order must match, and a `[...]` can't stitch two interviews together.
 6. **Gets a second opinion.** A fresh `research-verifier` agent re-reads the sources and tries to prove each theme wrong: recounts support, checks the ratings, and looks for smoothed-over contradictions, missed themes and unused sources.
@@ -77,7 +77,7 @@ Language models are fluent synthesizers and unreliable ones. They invent or smoo
 | `/synthesize <sources> --no-grill` | No questions; every assumption is written into the brief |
 | `/synthesize <sources> --batch` | The grill asks every open question at once |
 | `/synthesize` + attached photos or a FigJam URL | Transcribes stickies verbatim first; illegible ones are flagged, never guessed |
-| "Use the research-synthesizer agent on these notes" | The agent alone, without the grill or the loop |
+| "Use the workshop-synthesizer agent on these notes" | The agent alone, without the grill or the loop |
 
 In folder mode the report is saved to `research/insights/YYYY-MM-DD-<slug>.md`, with a code sheet beside it on larger studies. Inline, photo and FigJam runs return the report in chat and offer to save it.
 
@@ -108,7 +108,7 @@ python3 ../skills/synthesize/scripts/check_quotes.py bad-report.md notes/
 
 | File | What it is |
 | --- | --- |
-| [`agents/research-synthesizer.md`](agents/research-synthesizer.md) | The synthesizer. Modes: text, photo, FigJam, mixed; revision passes |
+| [`agents/workshop-synthesizer.md`](agents/workshop-synthesizer.md) | The synthesizer. Modes: text, photo, FigJam, mixed; revision passes |
 | [`agents/research-verifier.md`](agents/research-verifier.md) | The second reader. Read-only; returns BLOCKING and MINOR issues |
 | [`skills/synthesize/SKILL.md`](skills/synthesize/SKILL.md) | `/synthesize`: look, grill, the loop, the report |
 | [`skills/synthesize/scripts/check_quotes.py`](skills/synthesize/scripts/check_quotes.py) | The quote gate. `python3 check_quotes.py --selftest` runs its 12 cases |

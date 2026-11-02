@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The quote gate for /synthesize.
 
-Checks that every evidence quote in a research-synthesizer report appears
+Checks that every evidence quote in a workshop-synthesizer report appears
 verbatim in the source notes.
 
 Usage:
